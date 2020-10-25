@@ -1,0 +1,203 @@
+python -m rasa_core.run -d models/current/dialogue -u models/current/nlu --endpoints endpoints.yml --enable_api
+
+
+
+dispatcher.utter_message("Enter the 'Region' and 'Related to EPIC/IMR/Sharepoint' details, for all the regions enter 'All'")
+        reg = tracker.get_slot('region')
+        r = tracker.get_slot('rel') 
+        message = None
+        if (reg is not None) and (r is not None) and (message is not None):
+          dispatcher.utter_message("Enter document description here")
+          message = tracker.latest_message.text
+        return [SlotSet("doc_desc", message), SlotSet("region", region), SlotSet("rel", r)]
+
+def run(self, dispatcher, tracker, domain):
+ 
+       message = tracker.latest_message.get('text')
+       SlotSet('doc_desc', message)
+       dispatcher.utter_message(tracker.get_slot('doc_desc'))
+       return ['doc_desc']
+
+def required_slots(tracker) -> List[Text]:
+       # type: () -> List[Text]
+
+       return ["doc_desc"]
+
+   def slot_mapping(self):
+       
+       return {"doc_desc": self.from_text()}
+
+
+* MRI_update_sheet
+ - utter_region_rel
+ - form_1
+ - form{"name": "form_1"}
+ - form{"name": null}
+ - utter_doc_desc
+ - form_2
+ - slot{"doc_desc":"this can be anything"}
+ - form{"name": "form_2"}
+ - form{"name": null}
+
+intents:
+- greet
+- goodbye
+- thanks
+- details
+- name
+- inform
+- affirm
+- MRI_update_sheet
+- Naming_conventions
+
+entities:
+- name
+- SN
+- region
+- rel
+- doc_type
+- doc_desc
+- update
+- date
+- status
+- source
+- add_comments
+- reference
+
+## intent: MRI_update_sheet_doc_desc
+- [product can be anything](doc_desc)
+- [this whole statement is description](doc_desc)
+- [Something random](doc_desc)
+- [here can be a lot of information](doc_desc)
+- [it is all about redirecting the stories properly](doc_desc)
+- [At times approval is needed](doc_desc)
+- [I cannot think of any more random statements](doc_desc)
+- [the app needs to be completed](doc_desc)
+- [this can definitely match with any other column](doc_desc)
+- [what is important is the need to understand real world problems](doc_desc)
+- [etq documents can be asked for](doc_desc)
+- [It needs to be extracted completely](doc_desc)
+- [some date could have been used to train here](doc_desc)
+- [No not intent should be directed here](doc_desc)
+- [natural language is a problem](doc_desc)
+- [that needs to be solved](doc_desc)
+- [but is quite difficult](doc_desc)
+- [Hopefully one it will be solved](doc_desc)
+
+
+slots:
+  name:
+    type: text
+  action:
+    type: unfeaturized
+  SN:
+    type: unfeaturized
+  Region:
+    type: unfeaturized
+  Related to EPIC/IMR/Sharepoint:
+    type: unfeaturized
+  Document Type:
+    type: unfeaturized
+  Document Description:
+    type: unfeaturized
+  Update:
+    type: unfeaturized
+  Date Received:
+    type: unfeaturized
+  Status:
+    type: unfeaturized
+  Source:
+    type: unfeaturized
+  Additional Comments:
+    type: unfeaturized
+  Reference Data:     
+    type: unfeaturized       
+
+
+actions:
+- utter_res
+- utter_thanks
+- utter_greet
+- utter_goodbye
+- utter_further
+- utter_mri_options
+
+
+templates:
+  utter_res:
+  - text: "Hello! What can I help you with?"
+    buttons:
+    - title: "MRI update sheet"
+      payload: '{action:1}'
+    - title: "Naming Conventions"
+      payload: '{action:2}'
+
+
+  utter_greet:
+  - text: "Hello {name}. What can I help you with?"
+    buttons:
+    - title: "MRI update sheet"
+      payload: '{action:1}'
+    - title: "Naming Conventions"
+      payload: '{action:2}'
+
+  utter_mri_options:
+  - text: "Details are available for:"
+    buttons:
+    - title: "SN"
+      payload : '{"group":1}'
+    - title: "Region"
+      payload: '{"Region":1}'
+    - title: "Related to EPIC/IMR/Sharepoint"
+      payload: '{"Related to EPIC/IMR/Sharepoint":1}'
+    - title: "Document Type"
+      payload: '{"Document Type":1}'
+    - title: "Document Description"
+      payload: '{"Document Description":1}'
+    - title: "Update"
+      payload: '{"Update":1}'
+    - title: "Date Received"
+      payload: '{"Date Received":1}'
+    - title: "Status"
+      payload: '{"Status":1}'
+    - title: "Source"
+      payload: '{"Source":1}'
+    - title: "Additional Comments"
+      payload: '{"Additional Comments":1}'
+    - title: "Reference Data"
+      payload: '{"Reference Data":1}'
+
+  utter_goodbye:
+  - text: "Have a healthy day!"
+  
+  utter_thanks:
+  - text: "My pleasure, do you need any other help?."
+
+  utter_default:
+  - text: "Sorry, I didn't understand you, please try input something else"
+
+  utter_submit:
+  - text: "Done!"
+
+  utter_ask_group:
+  - text: "May I know the group name?"
+
+  utter_ask_subgroup:
+  - text: "The sub group name please?"
+
+  utter_ask_version:
+  - text: "version number?"
+
+  utter_ask_date:
+  - text: "The date please?"
+
+  utter_ask_doc_type:
+  - text: "I'll also need the 'type of doc' you are looking for, like xml, etc?"
+
+  utter_further:
+  - text: "Regarding?"
+
+
+
+forms:
+  - form_1

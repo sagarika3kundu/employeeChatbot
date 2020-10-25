@@ -1,0 +1,89 @@
+intents:
+- greet
+- goodbye
+- thanks
+- details
+- name
+- inform
+- affirm
+- MRI_update_sheet
+- doc_desc
+
+entities:
+- name
+- region
+- rel
+
+
+
+slots:
+  name:
+    type: text
+  region:
+    type: unfeaturized
+  rel:
+    type: unfeaturized
+  doc_desc:
+    type: unfeaturized
+
+
+actions:
+- utter_res
+- utter_thanks
+- utter_greet
+- utter_goodbye
+- utter_further
+- utter_dot
+
+
+templates:
+  utter_res:
+  - text: "Hello! What can I help you with?"
+    buttons:
+    - title: "MRI update sheet"
+      payload: '/MRI_update_sheet'
+    - title: "Naming Conventions"
+      payload: '/Naming_conventions'
+
+
+  utter_greet:
+  - text: "Hello {name}. What can I help you with?"
+    buttons:
+    - title: "MRI update sheet"
+      payload: "/MRI_update_sheet"
+    - title: "Naming Conventions"
+      payload: "/Naming_conventions"
+
+
+  utter_goodbye:
+  - text: "Have a healthy day!"
+  
+  utter_thanks:
+  - text: "My pleasure, do you need any other help?."
+
+  utter_default:
+  - text: "Sorry, I didn't understand you, please try input something else"
+
+  utter_submit:
+  - text: "proceeding...!"
+
+  utter_ask_region:
+  - text: "Enter the 'Region' and 'Related to EPIC/IMR/Sharepoint' details"
+
+  utter_ask_rel:
+  - text: "Related to EPIC/IMR/Sharepoint?"
+
+  utter_ask_doc_desc:
+  - text: "Enter the document description"
+
+  utter_further:
+  - text: "Regarding?"
+
+  utter_dot:
+  - text: "......"
+
+
+
+forms:
+  - form_1
+  - form_2

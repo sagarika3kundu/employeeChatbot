@@ -1,0 +1,91 @@
+%YAML 1.1
+---
+actions:
+- utter_res
+- utter_thanks
+- utter_greet
+- utter_goodbye
+- utter_further
+- utter_dot
+config:
+  store_entities_as_slots: true
+entities:
+- name
+- region
+- rel
+forms:
+- form_1
+- form_2
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thanks:
+    use_entities: true
+- details:
+    use_entities: true
+- name:
+    use_entities: true
+- inform:
+    use_entities: true
+- affirm:
+    use_entities: true
+- MRI_update_sheet:
+    use_entities: true
+- doc_desc:
+    use_entities: true
+slots:
+  doc_desc:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  name:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  region:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  rel:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  requested_slot:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+templates:
+  utter_ask_doc_desc:
+  - text: Enter the document description
+  utter_ask_region:
+  - text: Enter the 'Region' and 'Related to EPIC/IMR/Sharepoint' details
+  utter_ask_rel:
+  - text: Related to EPIC/IMR/Sharepoint?
+  utter_default:
+  - text: Sorry, I didn't understand you, please try input something else
+  utter_dot:
+  - text: '......'
+  utter_further:
+  - text: Regarding?
+  utter_goodbye:
+  - text: Have a healthy day!
+  utter_greet:
+  - buttons:
+    - payload: /MRI_update_sheet
+      title: MRI update sheet
+    - payload: /Naming_conventions
+      title: Naming Conventions
+    text: Hello {name}. What can I help you with?
+  utter_res:
+  - buttons:
+    - payload: /MRI_update_sheet
+      title: MRI update sheet
+    - payload: /Naming_conventions
+      title: Naming Conventions
+    text: Hello! What can I help you with?
+  utter_submit:
+  - text: proceeding...!
+  utter_thanks:
+  - text: My pleasure, do you need any other help?.

@@ -1,0 +1,31 @@
+{
+  "states": [
+    "intent_MRI_update_sheet",
+    "intent_affirm",
+    "intent_details",
+    "intent_doc_desc",
+    "intent_goodbye",
+    "intent_greet",
+    "intent_inform",
+    "intent_name",
+    "intent_thanks",
+    "entity_name",
+    "entity_region",
+    "entity_rel",
+    "slot_name_0",
+    "prev_action_listen",
+    "prev_action_restart",
+    "prev_action_default_fallback",
+    "prev_action_deactivate_form",
+    "prev_utter_res",
+    "prev_utter_thanks",
+    "prev_utter_greet",
+    "prev_utter_goodbye",
+    "prev_utter_further",
+    "prev_utter_dot",
+    "prev_form_1",
+    "prev_form_2",
+    "active_form_form_1",
+    "active_form_form_2"
+  ]
+}

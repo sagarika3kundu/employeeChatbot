@@ -1,0 +1,10 @@
+[
+    {
+        "name": "region",
+        "pattern": "(?i)(\\bInternational\\b|\\bJAPAC\\b|\\bAU\\/NZ\\b|\\bUS\\b|\\bGlobal\\b|\\bCanada\\b|\\bAU\\-NZ\\b|\\bUS\\/AU\\/NZ\\b|\\bUS\\/AU\\/NZ\\/JAPAC\\b|\\bJAPAC\\/US\\/CA\\b|\\bUS\\/CA\\b|\\bLA\\b|\\bAll\\b|\\bAU\\b)"
+    },
+    {
+        "name": "rel",
+        "pattern": "(?i)(\\bIMR\\/EPIC\\b|\\bEPIC\\/IMR\\b|\\bEPIC\\b|\\bIMR\\b|\\bGRIP\\b|\\bBox\\b|\\bTAT\\b|\\bGRIP\\/EPIC\\b|\\bN\\/A\\b|\\bEPIC\\/IMR\\/GRIP\\b)"
+    }
+]
